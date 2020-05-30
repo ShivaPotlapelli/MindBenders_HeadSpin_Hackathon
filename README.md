@@ -21,6 +21,6 @@ vinaykumar.badugu@celigo.com <br>
 
 #### Steps to Run :
 
-mvn clean 
+mvn clean <br>
 mvn test
 
