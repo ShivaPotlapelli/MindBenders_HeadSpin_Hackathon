@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sanity" thread-count="3" parallel="classes">
+
+    <listeners>
+        <listener class-name="org.mindbenders.makemytrip.reports.ExtentReporterNG"></listener>
+    </listeners>
+
+    <test name="Testing">
+        <classes>
+            <class name="org.mindbenders.makemytrip.MakeMyTrip"></class>
+        </classes>
+    </test>
+</suite>
