@@ -1,26 +1,28 @@
 package org.mindbenders.makemytrip.base;
 
+import org.apache.log4j.PropertyConfigurator;
+import org.mindbenders.makemytrip.utilities.LoggerClass;
+import org.mindbenders.makemytrip.utilities.WebdriverListeners;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.log4testng.Logger;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.PropertyConfigurator;
-import org.mindbenders.makemytrip.utilities.Actions;
-import org.mindbenders.makemytrip.utilities.LoggerClass;
-import org.mindbenders.makemytrip.utilities.WebdriverListeners;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.log4testng.Logger;
 
 public class TestBase {
 
     protected static WebDriver driver;
     protected static Properties properties;
-    protected static Actions selenium_Actions;
     protected static WebdriverListeners eventListener;
     protected static EventFiringWebDriver event_driver;
     protected static ChromeOptions chromeOptions;
@@ -63,8 +65,6 @@ public class TestBase {
 
         driver.get(properties.getProperty("url"));
 
-        selenium_Actions = new Actions();
-
     }
 
     private static WebDriver getDriver(String browserName) {
@@ -81,6 +81,44 @@ public class TestBase {
         log = Logger.getLogger(LoggerClass.class);
         PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/main/resources/log4j.properties");
 
+    }
+
+    public static void delay()
+    {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static WebElement getElement(By locatorPath)
+    {
+        return driver.findElement(locatorPath);
+    }
+
+
+    public static void clickElement(By locatorPath)
+    {
+        delay();
+        getElement(locatorPath).click();
+    }
+
+    public static void doubleClick(By locatorPath){
+
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(locatorPath);
+
+        action.doubleClick(element);
+        action.perform();
+    }
+
+
+    public static void sendText(By locatorPath, String text)
+    {
+        delay();
+        getElement(locatorPath).sendKeys(text);
     }
 
     public void tearDownMain() {
