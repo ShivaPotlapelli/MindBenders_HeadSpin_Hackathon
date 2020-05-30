@@ -2,6 +2,7 @@ package org.mindbenders.makemytrip.pages;
 
 import org.mindbenders.makemytrip.base.TestBase;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -31,7 +32,8 @@ public class LoginPage extends TestBase {
 		userName.sendKeys(Name);
 		try {
 			if (continueBtn.isEnabled()) {
-				continueBtn.click();
+				Actions actions = new Actions(driver);
+				actions.doubleClick(continueBtn).perform();
 			}
 		} catch (Exception e) {
 			System.out.println("Continue is not Enabled" + e);
