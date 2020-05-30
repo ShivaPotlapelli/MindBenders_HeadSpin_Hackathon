@@ -1,48 +1,24 @@
 package org.mindbenders.makemytrip.pages;
 
 import org.mindbenders.makemytrip.base.TestBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends TestBase {
 
-	@FindBy(css = "[data-cy='account']")
-	public WebElement accountBtn;
+	private static final By userName= By.id("username");
+	private static final By password= By.id("password");
+	private static final By continueBtn= By.cssSelector("[data-cy='continueBtn']");
+	private static final By accountBtn= By.cssSelector("[data-cy='account']");
+	private static final By loginBtn= By.cssSelector("[data-cy='login']");
 
-	@FindBy(id = "username")
-	public WebElement userName;
-
-	@FindBy(xpath = "//span[contains(text(),'Continue')]")
-	public WebElement continueBtn;
-
-	@FindBy(id = "password")
-	public WebElement password;
-
-	@FindBy(xpath = "//button[@class='capText font16']//span[contains(text(),'Login')]")
-	public WebElement loginBtn;
-
-	public LoginPage() {
-		PageFactory.initElements(driver, this);
-	}
-
-	public void userLogin(String Name, String pass) throws InterruptedException {
-		accountBtn.click();
-		userName.sendKeys(Name);
-		try {
-			if (continueBtn.isEnabled()) {
-				continueBtn.click();
-			}
-		} catch (Exception e) {
-			System.out.println("Continue is not Enabled" + e);
-		}
-		password.sendKeys(pass);
-		try {
-			if (loginBtn.isEnabled()) {
-				loginBtn.click();
-			}
-		} catch (Exception e) {
-			System.out.println("Login button is not Enabled" + e);
-		}
+	public void userLogin(String Name, String Password) {
+		clickElement(accountBtn);
+		sendText(userName,Name);
+		clickElement(continueBtn);
+		doubleClick(continueBtn);
+		sendText(password,Password);
+		clickElement(loginBtn);
+		doubleClick(loginBtn);
 	}
 }
