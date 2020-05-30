@@ -7,16 +7,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.mindbenders.makemytrip.utilities.Actions;
 import org.mindbenders.makemytrip.utilities.LoggerClass;
+import org.mindbenders.makemytrip.utilities.WebdriverListeners;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.log4testng.Logger;
-
-
-import org.mindbenders.makemytrip.utilities.Actions;
-import org.mindbenders.makemytrip.utilities.WebdriverListeners;
 
 public class TestBase {
 
