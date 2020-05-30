@@ -11,6 +11,7 @@ public class LoginPage extends TestBase {
 	private static final By continueBtn= By.cssSelector("[data-cy='continueBtn']");
 	private static final By accountBtn= By.cssSelector("[data-cy='account']");
 	private static final By loginBtn= By.cssSelector("[data-cy='login']");
+	private static final By closeModal= By.cssSelector("[data-cy='modalClose']");
 
 	public void userLogin(String Name, String Password) {
 		clickElement(accountBtn);
@@ -20,5 +21,6 @@ public class LoginPage extends TestBase {
 		sendText(password,Password);
 		clickElement(loginBtn);
 		doubleClick(loginBtn);
+		clickElement(closeModal);
 	}
 }
