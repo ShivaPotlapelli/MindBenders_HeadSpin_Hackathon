@@ -1,8 +1,8 @@
 # HeadSpin Hackathon
 
-#### Team Name : MindBenders
+## Team Name : MindBenders
 
-Technology Stack :
+###Technology Stack :
 
 1.Selenium Webdriver <br>
 2.Java <br>
@@ -11,16 +11,17 @@ Technology Stack :
 5.Chromedriver (added inside project - No more Worries !!)
 
 
+
+#### Steps to Run :
+
+Run mvn clean <br>
+Run mvn compile <br>
+Run mvn test
+
+
 Team Members :
 
 ashrith.yalala@celigo.com <br>
 rajaneeshkumar.balabadra@celigo.com <br>
 shiva.potlapelli@celigo.com <br>
 vinaykumar.badugu@celigo.com <br>
-
-
-#### Steps to Run :
-
-mvn clean <br>
-mvn test
-

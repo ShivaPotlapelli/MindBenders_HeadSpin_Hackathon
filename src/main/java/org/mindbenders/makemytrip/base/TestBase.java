@@ -4,19 +4,25 @@ import org.apache.log4j.PropertyConfigurator;
 import org.mindbenders.makemytrip.utilities.LoggerClass;
 import org.mindbenders.makemytrip.utilities.WebdriverListeners;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.log4testng.Logger;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import org.json.simple.JSONObject;
 
 
 public class TestBase {
@@ -49,7 +55,8 @@ public class TestBase {
     protected static void init() {
         startLogger();
         String browserName = properties.getProperty("browser");
-        driver = getDriver(browserName);
+        String mode = properties.getProperty("mode");
+        driver = getDriver(mode,browserName);
         log.info(browserName + " is configured");
 
         event_driver = new EventFiringWebDriver(driver);
@@ -67,12 +74,24 @@ public class TestBase {
 
     }
 
-    private static WebDriver getDriver(String browserName) {
-        if (browserName.equalsIgnoreCase("chrome")) {
+    private static WebDriver getDriver(String mode,String browserName) {
+        if (mode.equalsIgnoreCase("local") && browserName.equalsIgnoreCase("chrome")) {
+            //For Local Execution
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver");
             chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--start-maximized");
             return new ChromeDriver(chromeOptions);
+        } else if (mode.equalsIgnoreCase("remote")) {
+            //For Remote Execution
+            DesiredCapabilities capability = new DesiredCapabilities();
+            capability.setBrowserName(properties.getProperty("browser"));
+            capability.setVersion(properties.getProperty("version"));
+            capability.setCapability("headspin:newCommandTimeout","300");
+            try {
+                return new RemoteWebDriver(new URL(properties.getProperty("hub_url")),capability);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
