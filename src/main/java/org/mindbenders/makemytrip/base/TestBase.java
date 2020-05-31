@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -172,6 +173,18 @@ public class TestBase {
         delay();
         getElement(locatorPath).sendKeys(text);
     }
+    
+    public static void slide(WebDriver driver){
+        WebElement slider = driver.findElement(By.cssSelector(".input-range__slider"));
+        Actions move = new Actions(driver);
+        Action action = move.dragAndDropBy(slider, 8, 0).build();
+        action.perform();
+    }
+    
+    public static void moveToElement(WebDriver driver,WebElement Element){
+         new Actions(driver).moveToElement(Element).perform(); 
+    }
+
 
     public void tearDownMain() {
         driver.manage().deleteAllCookies();
