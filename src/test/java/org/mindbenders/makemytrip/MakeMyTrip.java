@@ -32,7 +32,8 @@ public class MakeMyTrip extends TestBase {
 
     @Test
     public void bookHotel() {
-        bookingPage.Booking(properties.getProperty("city"), properties.getProperty("month"), properties.getProperty("day"));
+    bookingPage.Booking(properties.getProperty("city"),properties.getProperty("checkInMonth"),properties.getProperty("checkInDay"),properties.getProperty("checkOutMonth"),properties.getProperty("checkOutDay"));
+
     }
     
     @Test
