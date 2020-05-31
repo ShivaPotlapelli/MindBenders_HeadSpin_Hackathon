@@ -34,6 +34,12 @@ Please update the config.properties mode to run either in local or remote(hub_ur
 
 Once the execution is completed reports can be found inside **target/surefire-reports/Extent.html**
 
+#### Challenges Faced :
+
+1. Price slider is not updating the price range value sometimes
+2. Sometimes clicks for some element is not changing any UI as Application is in the idle state.
+3. After applying filter, sometimes the filter tray is not shown at the top.
+
 --------------
 #### Team Members :
 
