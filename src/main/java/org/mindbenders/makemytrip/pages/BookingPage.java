@@ -8,7 +8,7 @@ public class BookingPage extends TestBase {
     private static final By hotel = By.cssSelector("[href*='hotels']");
     private static final By city = By.cssSelector("[data-cy='city']");
     private static final By enterCity = By.className("react-autosuggest__input");
-    private static final By dropdownpick = By.cssSelector("[id='react-autowhatever-1-section-0-item-0']");
+    private static final By dropDownPick = By.cssSelector("[id='react-autowhatever-1-section-0-item-0']");
     private static final By checkin = By.cssSelector("[data-cy='checkin']");
     private static final By datepicker = By.className("DayPicker-Day");
 
@@ -16,7 +16,7 @@ public class BookingPage extends TestBase {
         clickElement(hotel);
         clickElement(city);
         sendText(enterCity, area);
-        clickElement(dropdownpick);
+        clickElement(dropDownPick);
         clickElement(checkin);
         clickElement(checkin);
         datePicker(datepicker, month, day);
