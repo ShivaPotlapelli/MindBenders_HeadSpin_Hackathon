@@ -14,14 +14,14 @@ public class LoginPage extends TestBase {
 
 
 	public void userLogin(String Name, String Password) {
-		clickElement(accountBtn);
-		sendText(userName, Name);
-		clickElement(continueBtn);
-		doubleClick(continueBtn);
-		sendText(password, Password);
-		clickElement(loginBtn);
-		doubleClick(loginBtn);
-		clickElement(closeModal);
-	}
+        clickElement(accountBtn);
+        sendText(userName, Name);
+        clickElement(continueBtn);
+        doubleClick(continueBtn);
+        sendText(password, Password);
+        clickElement(loginBtn);
+        doubleClick(loginBtn);
+        clickElement(closeModal);
+    }
 }
 

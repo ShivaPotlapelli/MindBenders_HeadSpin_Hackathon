@@ -21,13 +21,14 @@ public class MakeMyTrip extends TestBase {
     }
     
     @BeforeTest(alwaysRun = true)
-    public void loginAdnVerify() throws InterruptedException {
+    public void loginAdnVerify() {
         loginPage.userLogin(properties.getProperty("UserName"), properties.getProperty("Password"));
     }
 
     @Test
     public void bookHotel() {
     bookingPage.Booking(properties.getProperty("city"),properties.getProperty("checkInMonth"),properties.getProperty("checkInDay"),properties.getProperty("checkOutMonth"),properties.getProperty("checkOutDay"));
+
     }
 
 
