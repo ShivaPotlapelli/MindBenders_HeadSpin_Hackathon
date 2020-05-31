@@ -136,10 +136,23 @@ public class TestBase {
             String date = ele.getAttribute("aria-label");
             String months = date.split(" ")[1];
             String days = date.split(" ")[2];
-            System.out.println(months + days);
+            //System.out.println(months+days);
             if (month.equalsIgnoreCase(months) && day.equalsIgnoreCase(days)) {
-                System.out.println(months + days);
+                //System.out.println(months+days);
                 ele.click();
+                break;
+            }
+        }
+    }
+    public static void guestSelect(By locatorPath,String count) {
+        delay();
+        List<WebElement> elements = getElements(locatorPath);
+        for (WebElement ele : elements) {
+            String persons = ele.getAttribute("data-cy");
+            System.out.println(persons);
+            if (persons.contains(count)) {
+                ele.click();
+                break;
             }
         }
     }
