@@ -22,6 +22,9 @@ public class BookingPage extends TestBase {
 	private static final By mapRemoval = By.cssSelector("[data-cy='landingContainer']");
 	private static final By userRating = By
 			.xpath("//ul[@class='filterList']//label[contains(text(),'4.5 & above (Excellent)')]");
+	private static final By fifthHotel = By.cssSelector("[class='makeFlex spaceBetween']");
+	private static final By roomSelect = By.xpath("//a[contains(@class,'primaryBtn appendBottom15')]");
+
 
 	public void Booking(String area, String checkInMonth, String checkInDay, String checkOutMonth, String checkOutDay) {
 		clickElement(hotel);
@@ -53,6 +56,10 @@ public class BookingPage extends TestBase {
 		clickElement(mapRemoval);
 		slide(driver);
 		clickElement(userRating);
+		delay();
+		hotelRoom(fifthHotel,5);
 		takeScreenShot(driver);
+		switchWindow();
+		clickElement(roomSelect);	
 	}
 }
