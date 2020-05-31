@@ -80,22 +80,22 @@ public class WebdriverListeners extends TestBase implements WebDriverEventListen
 
     @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-
+        System.out.println("Clicking on "+webElement.toString());
     }
 
     @Override
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
-
+        System.out.println("Clicked on "+webElement.toString());
     }
 
     @Override
     public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
-
+        System.out.println("Sending Text "+webElement.toString());
     }
 
     @Override
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
-
+        System.out.println("Sent Text "+webElement.toString());
     }
 
     @Override
@@ -120,7 +120,8 @@ public class WebdriverListeners extends TestBase implements WebDriverEventListen
 
     @Override
     public void onException(Throwable throwable, WebDriver webDriver) {
-
+        System.out.println("Exception Thrown " +throwable.getMessage());
+        TestCommonUtils.takeScreenShot(driver);
     }
 
     @Override
