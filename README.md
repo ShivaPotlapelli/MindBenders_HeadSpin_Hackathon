@@ -2,7 +2,7 @@
 
 ### Team Name : MindBenders
 
-###Technology Stack :
+### Technology Stack :
 
 1.Selenium Webdriver <br>
 2.Java <br>
@@ -15,12 +15,12 @@
 -----------------
 #### Features : <br>
 
-1.Clean and Simple Implementation of Tests in TestNG <br>
-2.WebdriverListeners for better logging <br>
-3.Avoided HardCoded Values (driven through properties file) <br>
-4.Reusable and Dynamic handling methods are written <br>
-5.OOPS concepts were implemented wherever feasible
-6.ExtentReports support added
+1. Clean and Simple Implementation of Tests in TestNG
+2. WebdriverListeners for better logging <br>
+3. Avoided HardCoded Values (driven through properties file) <br>
+4. Reusable and Dynamic handling methods are written <br>
+5. OOPS concepts were implemented wherever feasible <br>
+6. ExtentReports support added
 -------------
 
 #### Steps to Run :
