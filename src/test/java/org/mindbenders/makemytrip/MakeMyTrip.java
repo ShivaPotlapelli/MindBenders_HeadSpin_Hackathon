@@ -2,6 +2,7 @@ package org.mindbenders.makemytrip;
 
 import org.mindbenders.makemytrip.base.TestBase;
 import org.mindbenders.makemytrip.pages.BookingPage;
+import org.mindbenders.makemytrip.pages.BookingSummary;
 import org.mindbenders.makemytrip.pages.LoginPage;
 import org.mindbenders.makemytrip.pages.TravellerPage;
 import org.testng.annotations.AfterSuite;
@@ -14,6 +15,8 @@ public class MakeMyTrip extends TestBase {
     BookingPage bookingPage;
     LoginPage loginPage;
     TravellerPage travellerPage;
+    BookingSummary bookingSum;
+
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
@@ -34,7 +37,14 @@ public class MakeMyTrip extends TestBase {
     
     @Test
     public void travellerDetails() {
-    	travellerPage.travellerInfo(properties.getProperty("FirstName"), properties.getProperty("LastName"), properties.getProperty("Mobile"));
+    	travellerPage.travellerInfo(properties.getProperty("FirstName"), properties.getProperty("LastName"), properties.getProperty("Phone"));
+    }
+    
+    @Test
+    public void verifyDetails(){
+        bookingSum.verifyHotelName(properties.getProperty("hotel"));
+        bookingSum.verifyTravellerDetails(properties.getProperty("FirstName"),properties.getProperty("LastName"),properties.getProperty("UserName"),properties.getProperty("Phone"));
+        bookingSum.verifyDates(properties.getProperty("checkInDay"),properties.getProperty("checkInMonth"),properties.getProperty("checkOutDay"),properties.getProperty("checkOutMonth"));
     }
 
    
