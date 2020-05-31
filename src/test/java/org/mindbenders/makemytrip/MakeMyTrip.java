@@ -3,7 +3,6 @@ package org.mindbenders.makemytrip;
 import org.mindbenders.makemytrip.base.TestBase;
 import org.mindbenders.makemytrip.pages.BookingPage;
 import org.mindbenders.makemytrip.pages.LoginPage;
-import org.mindbenders.makemytrip.utilities.TestCommonUtils;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -22,14 +21,13 @@ public class MakeMyTrip extends TestBase {
     }
     
     @BeforeTest(alwaysRun = true)
-    public void loginAdnVerify() throws InterruptedException {
+    public void loginAdnVerify() {
         loginPage.userLogin(properties.getProperty("UserName"), properties.getProperty("Password"));
-        TestCommonUtils.takeScreenShot(driver);
     }
 
     @Test
     public void bookHotel() {
-        //TestCommonUtils.takeScreenShot(driver);
+        bookingPage.Booking(properties.getProperty("city"), properties.getProperty("month"), properties.getProperty("day"));
     }
 
 

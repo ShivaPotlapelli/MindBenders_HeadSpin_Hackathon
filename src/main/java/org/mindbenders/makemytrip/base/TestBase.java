@@ -20,9 +20,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import org.json.simple.JSONObject;
+
+import static java.lang.Integer.parseInt;
 
 
 public class TestBase {
@@ -33,6 +35,7 @@ public class TestBase {
     protected static EventFiringWebDriver event_driver;
     protected static ChromeOptions chromeOptions;
     protected static Logger log;
+    public int a;
 
     public TestBase() {
 
@@ -112,19 +115,36 @@ public class TestBase {
 
     }
 
-    public static WebElement getElement(By locatorPath)
-    {
+    public static WebElement getElement(By locatorPath) {
         return driver.findElement(locatorPath);
     }
 
+    public static List<WebElement> getElements(By locatorPath) {
+        return driver.findElements(locatorPath);
+    }
 
-    public static void clickElement(By locatorPath)
-    {
+
+    public static void clickElement(By locatorPath) {
         delay();
         getElement(locatorPath).click();
     }
 
-    public static void doubleClick(By locatorPath){
+    public static void datePicker(By locatorPath, String month, String day) {
+        delay();
+        List<WebElement> elements = getElements(locatorPath);
+        for (WebElement ele : elements) {
+            String date = ele.getAttribute("aria-label");
+            String months = date.split(" ")[1];
+            String days = date.split(" ")[2];
+            System.out.println(months + days);
+            if (month.equalsIgnoreCase(months) && day.equalsIgnoreCase(days)) {
+                System.out.println(months + days);
+                ele.click();
+            }
+        }
+    }
+
+    public static void doubleClick(By locatorPath) {
 
         Actions action = new Actions(driver);
         WebElement element = driver.findElement(locatorPath);
