@@ -18,12 +18,15 @@ public class BookingPage extends TestBase {
     private static final By travellingFor= By.cssSelector("[data-cy='travelForText']");
     private static final By travellingForWork= By.cssSelector("[data-cy='travelFor-Work']");
     private static final By search= By.cssSelector("[data-cy='submit']");
+    private static final By mapRemoval= By.cssSelector("[data-cy='landingContainer']");
+
 
     public void Booking(String area,String checkInMonth,String checkInDay,String checkOutMonth,String checkOutDay) {
         clickElement(hotel);
         //select city
         clickElement(city);
         sendText(enterCity,area);
+        delay();
         clickElement(dropDownPick);
         //checkin date
         clickElement(checkin);
@@ -38,7 +41,6 @@ public class BookingPage extends TestBase {
         //addRoom
         clickElement(addRoom);
         //select Adult Guest
-        clickElement(guest);
         guestSelect(roomMembers,"adults-2");
         //select Children Guest
         guestSelect(roomMembers,"children-2");
@@ -46,5 +48,6 @@ public class BookingPage extends TestBase {
         clickElement(travellingFor);
         clickElement(travellingForWork);
         clickElement(search);
+        clickElement(mapRemoval);
     }
 }

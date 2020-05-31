@@ -23,6 +23,8 @@ public class MakeMyTrip extends TestBase {
         init();
         loginPage = new LoginPage();
         bookingPage = new BookingPage();
+        travellerPage = new TravellerPage();
+        bookingSum = new BookingSummary();
     }
     
     @BeforeTest(alwaysRun = true)
